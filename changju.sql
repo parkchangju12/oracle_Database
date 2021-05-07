@@ -4,20 +4,11 @@ SELECT table_name
 
 CREATE TABLE ex2_1 (
     COLUMN1     CHAR(10),
-    COLUMN2     VARCHAR2(10),null
+    COLUMN2     VARCHAR2(10),
     COLUMN3     NVARCHAR2(10),
     COLUMN4     NUMBER
 );
 
-CREATE TABLE employees (
-    EMPLOYEE_ID    NUMBER(6,0)   NOT NULL,
-    EMP_NAME      VARCHAR2(80) NOT NULL,
-    ...
-    SALARY        NUMBER(8,2) ,
-    HIRE_DATE     DATE         NOT NULL,
-    ...
-    ... );
-    
     
 INSERT INTO ex2_1 (column1, column2) VALUES ('abc', 'abc');
 
@@ -55,3 +46,34 @@ SELECT column_id, column_name, data_type, data_length
   FROM user_tab_cols
 WHERE table_name = 'EX2_3'
 ORDER BY column_id;
+
+
+CREATE TABLE ex2_4 (
+    COL_FLOT1 FLOAT(32),
+    COL_FLOT2 FLOAT
+);
+
+INSERT INTO ex2_4 (col_flot1, col_flot2) VALUES (1234567891234, 1234567891234);
+
+CREATE TABLE ex2_5 (
+    COL_DATE DATE,
+    COL_TIMESTAMP TIMESTAMP
+);
+
+INSERT INTO ex2_5 VALUES (SYSDATE, SYSTIMESTAMP);
+
+SELECT *
+    FROM ex2_5;
+    
+CREATE TABLE ex2_6 (
+    COL_NULL        VARCHAR2(10),
+    COL_NOT_NULL    VARCHAR2(10) NOT NULL
+);
+
+INSERT INTO ex2_6 VALUES ('AA', '');
+
+INSERT INTO ex2_6 VALUES ('AA','BB');
+
+SELECT constraint_name, constraint_type, table_name, search_condition
+    FROM user_constraints
+WHERE table_name = 'EX2_6';

@@ -7,8 +7,8 @@ Warning: the objects were exported by ORA_USER, not by you
 
 import done in KO16MSWIN949 character set and AL16UTF16 NCHAR character set
 import server uses AL32UTF8 character set (possible charset conversion)
-. importing ORA_USER's objects into CHANGJU
-. importing ORA_USER's objects into CHANGJU
+. importing ORA_USER's objects into CHANGJU1
+. importing ORA_USER's objects into CHANGJU1
 . . importing table                     "CHANNELS"          5 rows imported
 . . importing table                    "COUNTRIES"         23 rows imported
 . . importing table                    "CUSTOMERS"      55500 rows imported
