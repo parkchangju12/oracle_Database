@@ -77,3 +77,52 @@ INSERT INTO ex2_6 VALUES ('AA','BB');
 SELECT constraint_name, constraint_type, table_name, search_condition
     FROM user_constraints
 WHERE table_name = 'EX2_6';
+
+CREATE TABLE ex2_7 (
+    COL_UNIQUE_NULL     VARCHAR2(10) UNIQUE,
+    COL_UNIQUE_NULLL    VARCHAR2(10) UNIQUE NOT NULL,
+    COL_UNIQUE          VARCHAR2(10),
+    CONSTRAINTS unique_nm1 UNIQUE (COL_UNIQUE)
+);
+
+SELECT constraint_name, constraint_type, table_name, search_condition
+    FROM user_constraints
+WHERE table_name = 'EX2_7';
+
+INSERT INTO ex2_7 VALUES ('AA', 'AA', 'AA');
+
+INSERT INTO ex2_7 VALUES ('AA', 'AA', 'AA');
+
+INSERT INTO ex2_7 VALUES ('', 'BB', 'BB');
+
+INSERT INTO ex2_7 VALUES ('', 'CC', 'CC');
+
+CREATE TABLE ex2_8 (
+    COL1 VARCHAR2(10) PRIMARY KEY,
+    COL2 VARCHAR2(10)
+);
+
+SELECT constraint_name, constraint_type, table_name, search_condition
+    FROM user_constraints
+  WHERE table_name = 'EX2_8';
+
+INSERT INTO ex2_8 VALUES ('', 'AA'); --오류
+
+INSERT INTO ex2_8 VALUES ('AA', 'AA'); 
+
+INSERT INTO ex2_8VALUES ('AA', 'AA'); --오류
+
+CREATE TABLE ex2_9 (
+    num1    NUMBER 
+    CONSTRAINTS check1 CHECK ( num1 BETWEEN 1 AND 9),
+    gender  VARCHAR2(10)
+    CONSTRAINTS check2 CHECK ( gender IN ('MALE', 'FEMALE'))
+);
+
+SELECT constraint_name constraint_type, table_name, search_condition
+    FROM user_constraints
+WHERE table_name = 'EX2_9';
+
+INSERT INTO ex2_9 VALUES (10, 'MAN');
+
+INSERT INTO ex2_9 VALUES (5, 'FEMALE');
