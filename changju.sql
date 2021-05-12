@@ -126,3 +126,42 @@ WHERE table_name = 'EX2_9';
 INSERT INTO ex2_9 VALUES (10, 'MAN');
 
 INSERT INTO ex2_9 VALUES (5, 'FEMALE');
+
+CREATE TABLE ex2_10 (
+    Col1 VARCHAR2(10) NOT NULL,
+    Col2 VARCHAR2(10) NULL,
+    Create_date DATE DEFAULT SYSDATE);
+
+INSERT INTO ex2_10 (col1, col2) VALUES ('AA', 'BB');
+
+SELECT *
+    FROM ex2_10;
+    
+DROP TABLE ex2_10;
+
+CREATE TABLE ex2_10 (
+    Col1 VARCHAR2(10) NOT NULL,
+    Col2 VARCHAR2(10) NULL,
+    Create_date DATE DEFAULT SYSDATE);
+    
+ALTER TABLE ex2_10 RENAME COLUMN Col1 TO Col11;
+
+DESC ex2_10;
+
+ALTER TABLE ex2_10 MODIFY Col2 VARCHAR2(30);
+
+DESC ex2_10;
+
+ALTER TABLE ex2_10 ADD Col3 NUMBER;
+
+DESC ex2_10;
+
+ALTER TABLE ex2_10 DROP COLUMN Col3 ;]
+
+DESC ex2_10;
+
+ALTER TABLE ex2_10 ADD CONSTRAINTS pk_ex2_10 PRIMARY KEY (Col11);
+
+SELECT constraint_name, constraint_type, table_name, search_condition
+    FROM user_constraints
+WHERE table_name = 'EX2_10';
