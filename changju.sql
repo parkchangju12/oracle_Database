@@ -127,6 +127,7 @@ INSERT INTO ex2_9 VALUES (10, 'MAN');
 
 INSERT INTO ex2_9 VALUES (5, 'FEMALE');
 
+DROP TABLE ex2_10;
 CREATE TABLE ex2_10 (
     Col1 VARCHAR2(10) NOT NULL,
     Col2 VARCHAR2(10) NULL,
@@ -165,3 +166,110 @@ ALTER TABLE ex2_10 ADD CONSTRAINTS pk_ex2_10 PRIMARY KEY (Col11);
 SELECT constraint_name, constraint_type, table_name, search_condition
     FROM user_constraints
 WHERE table_name = 'EX2_10';
+
+ALTER TABLE ex2_10 DROP CONSTRAINTS pk_ex2_10;
+
+SELECT constraint_name, constraint_type, table_name, search_condition
+    FROM user_constraints
+WHERE table_name = 'EX2_10';
+
+CREATE TABLE ex2_9_1 AS
+SELECT *
+FROM ex2_9;
+
+SELECT a.employee_id, a.emp_name, a.department_id, b.department_name
+    FROM employees a, departments b
+WHERE a.department_id = b.department_id;
+
+CREATE OR REPLACE VIEW emp_dept_v1 AS
+SELECT a.employee_id, a.emp_name, a.department_id, b.department_name
+    FROM employees a, departments b
+WHERE a.department_id = b.department_id;
+
+SELECT *
+    FROM emp_dept_v1;
+    
+CREATE UNIQUE INDEX ex2_10_ix01
+ON ex2_10 (col11);
+
+SELECT index_name, index_type, table_name, uniqueness
+    FROM user_indexes
+WHERE table_name = 'EX2_10';
+
+SELECT constraint_name, constraint_type, table_name, index_name
+    FROM user_constraints
+WHERE table_name = 'JOB_HISTORY';
+
+SELECT index_name, index_type, table_name, uniqueness
+    FROM user_indexes
+WHERE table_name = 'JOB_HISTORY';
+
+CREATE INDEX ex2_10_ix02
+ON ex2_10 (col11, col2);
+
+DROP INDEX ex2_10_ix02;
+
+CREATE OR REPLACE SYNONYM syn_channel
+FOR channels;
+
+SELECT COUNT(*)
+    FROM syn_channel;
+    
+ALTER USER HR IDENTIFIED BY HR ACCOUNT UNLOCK;
+
+SELECT COUNT(*)
+FROM ora_user.syn_channel;
+
+GRANT SELECT ON syn_channel TO HR;
+
+SELECT COUNT(*)
+FROM changju.syn_channel;
+
+CREATE OR REPLACE PUBLIC SYNONYM syn_channel2
+FOR channels;
+
+GRANT SELECT ON syn_channel2 TO PUBLIC;
+
+SELECT COUNT(*)
+    FROM syn_channel2;
+    
+DROP SYNONYM syn_channel;
+
+DROP PUBLIC SYNONYM syn_channel2;
+
+CREATE SEQUENCE my_seq1
+INCREMENT BY 1
+START WITH 1
+MINVALUE 1
+MAXVALUE 1000
+NOCYCLE
+NOCACHE;
+
+DELETE ex2_8;
+INSERT INTO ex2_8 (col1) VALUES (my_seq1.NEXTVAL);
+
+INSERT INTO ex2_8 (col1) VALUES (my_seq1.NEXTVAL);
+
+SELECT *
+FROM ex2_8;
+
+SELECT my_seq1.CURRVAL
+FROM DUAL;
+
+INSERT INTO ex2_8 (col1) VALUES (my_seq1.NEXTVAL);
+
+SELECT *
+FROM ex2_8;
+
+SELECT my_seq1.NEXTVAL
+FROM DUAL;
+
+INSERT INTO ex2_8 (col1) VALUES (my_seq1.NEXTVAL);
+
+SELECT *
+FROM ex2_8;
+
+DROP SEQUENCE my_seq1;
+
+    
+
