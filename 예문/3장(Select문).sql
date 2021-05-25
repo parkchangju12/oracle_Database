@@ -1,9 +1,9 @@
-1. Select문;
+--1. Select문;
 
 - 예문1
 select 사원번호, 사원명(컬럼) # *은 모든 컬럼
 from 사원테이블 (어디서)
-where 급여>50000; (조건)
+where 급여>50000; (조건);
 
 SELECT employee_id, emp_name
 FROM employees
@@ -35,3 +35,12 @@ FROM employees
 WHERE salary > 5000
 OR    job_id = 'IT_PROG'
 ORDER BY employee_id;
+
+- 예문5
+원컬럼명 AS 컬럼별칭 AS 생략가능
+
+SELECT  a.employee_id, a.emp_name, a.department_id,
+        b.department_name AS dep_name
+FROM    employees a,
+        departments b
+WHERE   a.department_id = b.department_id;
