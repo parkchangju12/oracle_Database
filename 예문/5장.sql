@@ -215,3 +215,16 @@ SELECT goods
 FROM exp_goods_asia
 WHERE country = '일본'
 ORDER BY goods;
+
+
+SELECT period, gubun, SUM(loan_jan_amt) totl_jan
+FROM kor_loan_status
+WHERE period LIKE '2013%'
+GROUP BY GROUPING SETS(period, gubun);
+
+SELECT period, gubun, region, SUM(loan_jan_amt) totl_jan
+FROM kor_loan_status
+WHERE period LIKE '2013%'
+AND region IN ('서울', '경기')
+GROUP BY GROUPING SETS(period, (gubun,REGION));
+
