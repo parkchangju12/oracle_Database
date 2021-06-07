@@ -26,7 +26,7 @@ SELECT employee_id, emp_name, HIRE_DATE,
  SELECT cust_name, cust_main_phone_number, 
        TRANSLATE(cust_main_phone_number, '0123456789', 'imastudent') new_phone_number
   FROM customers
-  ORDER BY cust_name ASC;
+  ORDER BY cust_name;
 
 4.
 CREATE TABLE exam3
@@ -40,8 +40,10 @@ INSERT INTO exam3(name, new_phone_number)
 SELECT cust_name,
        TRANSLATE(cust_main_phone_number, '0123456789', 'imastudent') new_phone_number
 FROM customers
-ORDER BY cust_name ASC;
+ORDER BY cust_name;
 
+SELECT *
+FROM exam3;
 
 6.;
 
